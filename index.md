@@ -1,5 +1,5 @@
 ---
-title: NGLess: NGS Processing with Less Work
+title: "NGLess: NGS Processing with Less Work"
 ---
 # NGLess: NGS Processing with Less Work
 
