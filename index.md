@@ -8,7 +8,10 @@ processing.
 
 **Note**: This is *pre-release* software, currently available as a preview
 only. Please [get in touch](mailto:coelho@embl.de) if you want to use it in
-your work.
+your work (we heartily welcome beta testers). The features listed here all
+currently work, but they might have some rough edges (for example, unhelpful
+error messages when the inputs are not perfect – again, do get in touch if
+you're interested and we can help).
 
 ## Example
 
@@ -27,6 +30,23 @@ your work.
     write(count(annotated, count={gene}),
             ofile='gene_counts.csv',
             format={csv})
+
+## Basic features
+
+- preprocessing and quality control of FastQ files
+- mapping to a reference genome (implemented through [bwa](http://bio-bwa.sourceforge.net/))
+- annotation and summarization of the alignments using reference gene annotations
+
+Ngless has builtin support for some model organisms:
+
+1. Homo sapiens (hg19)
+2. Mus Muscullus (mm10)
+3. Rattus norvegicus (rn4)
+4. Bos taurus (bosTau4)
+5. Canis familiaris (canFam2)
+6. Drosophila melanogaster (dm3)
+7. Caenorhabditis elegans (ce10)
+8. Saccharomyces cerevisiae (sacCer3)
 
 ## Traditional Unix command line usage
 
