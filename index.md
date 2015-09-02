@@ -95,6 +95,8 @@ programme (not just `cat`).
 
 [Full documentation](http://ngless.readthedocs.org/en/latest/)
 
+[Frequently Asked Questions (FAQ)](http://ngless.readthedocs.org/en/latest/faq.html)
+
 ## Building and installing
 
 Again, please note that this is pre-release software. Thus, we do not provide
@@ -109,7 +111,7 @@ into it.
 
 ## Authors
 
-- [Luis Pedro Coelho](http://luispedro.org) [coelho@embl.de](mailto:coelho@embl.de) [@luispedrocoelho](https://twitter.com/luispedrocoelho)
+- [Luis Pedro Coelho](http://luispedro.org) (email: [coelho@embl.de](mailto:coelho@embl.de)) (on twitter: [@luispedrocoelho](https://twitter.com/luispedrocoelho))
 - Paulo Monteiro
 - [Ana Teresa Freitas](http://web.tecnico.ulisboa.pt/ana.freitas/)
 
