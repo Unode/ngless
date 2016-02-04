@@ -15,19 +15,35 @@ you're interested and we can help).
 
 ## Example
 
+    # We always declare a specific version at the top
+    # this way, the script is 100% reproducible
     ngless "0.0"
+
+    # Load input files
     input = fastq(['ctrl1.fq','ctrl2.fq','stim1.fq','stim2.fq'])
+
+    # Some basic preprocessing
     preprocess(input) using |read|:
         read = read[5:]
         read = substrim(read, min_quality=26)
         if len(read) < 31:
             discard
 
+    # Map (align) using one of the built in references (hg19: human).
+    # Built-in references are downloaded the first time they are used.
+    # You can, naturally, also use your own references
     mapped = map(input,
                     reference='hg19')
-    annotated = annotate(mapped,
+
+    # Annotate reads to genes. In this case, ngless knows that mapped comes
+    # from hg19 and automatically uses the correct annotation file.
+    counts = count(mapped,
                     features=[{gene}])
-    write(count(annotated, count={gene}),
+
+    # Finally write out the output:
+    # Ngless is careful to write files out so that *partial results are never written*.
+    # If you have a results file, it will be complete.
+    write(counts,
             ofile='gene_counts.csv',
             format={csv})
 
