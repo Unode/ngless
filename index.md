@@ -83,9 +83,21 @@ This is equivalent to the full script:
     reads = as_reads(samcontents) # <- just get the reads (w quality scores)
     write(reads, ofname=STDOUT) # <- write them to STDOUT (default format: FASTQ)
 
+This only works if the data in the samfile is single ended as we pipe out a
+single FQ file. Otherwise, you can always do:
+
+
+    ngless "0.0"
+    write(as_read(samfile("file.sam")),
+            ofile="output.fq")
+
+which will write 3 files: `output.1.fq`, `output.2.fq`, and
+`output.singles.fq` (the first two for the paired-end reads and the last one
+for reads without a mate).
+
 ### Getting aligned reads from a SAM file as FASTQ file
 
-Building on the previous one-liner. We can add a `select()` call to only output
+Building on the previous example. We can add a `select()` call to only output
 unmapped reads:
 
     $ ngless -pe 'as_reads(select(samfile("file.sam"), keep_if=[{mapped}]))' > file.fq
@@ -116,13 +128,14 @@ programme (not just `cat`).
 ## Building and installing
 
 Again, please note that this is pre-release software. Thus, we do not provide
-any easy to use packages at the moment. However, any comments (including bug
+any easy to install (pre-built) packages at the moment, but they will be
+provided once the software is released. However, any comments (including bug
 and build reports), are more than welcome.
 
-Cabal version 1.18 or higher is necessary.
-
-Running `make` should build a sandbox and download/install all dependencies
-into it.
+[stack](http://docs.haskellstack.org/en/stable/README/) is highly recommended.
+Install it and running `stack build` should (1) download all dependencies with
+the correct versions and (2) build ngless. It will perform this task in its own
+sandbox so it will not interfere with any other work.
 
 
 ## Authors
