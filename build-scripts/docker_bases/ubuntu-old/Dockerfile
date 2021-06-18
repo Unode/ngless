@@ -1,6 +1,9 @@
-FROM ubuntu:xenial
+FROM ubuntu:focal
 
 LABEL maintainer "alves.rjc+docker@gmail.com"
+
+ARG DEBIAN_FRONTEND="noninteractive"
+ENV TZ="Europe/London"
 
 RUN apt update && \
     apt install -y \
@@ -17,8 +20,8 @@ RUN apt update && \
     liblzma-dev \
     m4 \
     pkg-config \
-    python-dev \
-    python-pip \
+    python3-dev \
+    python3-pip \
     vim \
     wget \
     xz-utils \

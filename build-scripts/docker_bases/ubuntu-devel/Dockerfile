@@ -2,6 +2,9 @@ FROM ubuntu:devel
 
 LABEL maintainer "alves.rjc+docker@gmail.com"
 
+ENV DEBIAN_FRONTEND="noninteractive"
+ENV TZ="Europe/London"
+
 RUN apt update && \
     apt install -y \
     build-essential \
