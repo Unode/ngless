@@ -12,6 +12,7 @@ RUN apt update && \
     coreutils \
     curl \
     ghc \
+    g++-8 \
     git \
     libbz2-dev \
     libcairo2-dev \
