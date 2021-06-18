@@ -13,17 +13,27 @@ jobs:
         with:
           enable-stack: true
           stack-version: "latest"
-      - name: Install G++-8
+
+      - name: Install GCC8/G++-8
         run: |
           sudo apt update
           sudo apt install -y g++-8
+
       - name: Setup stack
-        run: |
-          stack setup
-      - name: Build NGLess and dependencies
-        run: |
-          make
-          make install CXX=g++-8 prefix=ngless_path/ngless
+        run: stack setup
+
+      - name: Build Static NGLess and dependencies
+        run: make static
+
+      - name: Build NGLess modules
+        run: make modules
+
+      - name: Run tests
+        run: make check
+
+      - name: Build NGLess modules
+        run: make install CXX=g++-8 prefix=ngless_path/ngless
+
       - name: upload
         uses: actions/upload-artifact@v2
         with:
