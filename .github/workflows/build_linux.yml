@@ -1,0 +1,24 @@
+---
+name: NGLess Linux (Ubuntu) Build
+
+on: [push]
+
+jobs:
+  ngless:
+    name: Build, install and upload NGLess
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-haskell@v1.1
+        with:
+          enable-stack: true
+          stack-version: "latest"
+      - run: |
+            stack setup
+            make
+            make install CXX=g++-8 prefix=ngless_path/ngless
+      - name: upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: ngless_install
+          path: ngless_path/ngless
