@@ -23,7 +23,7 @@ jobs:
         run: stack setup
 
       - name: Build Static NGLess and dependencies
-        run: make static
+        run: make static CXX=g++-8
 
       - name: Build NGLess modules
         run: make modules
