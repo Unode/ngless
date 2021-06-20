@@ -7,6 +7,9 @@ jobs:
   ngless:
     name: Build, install and upload NGLess
     runs-on: ubuntu-latest
+    env:
+      # Force building/installing a static binary
+      STACKOPTS: "--ghc-options '-fPIC' --flag NGLess:embed"
     steps:
       - uses: actions/checkout@v2
       - uses: haskell/actions/setup@v1
@@ -31,10 +34,10 @@ jobs:
       - name: Run tests
         run: make check
 
-      - name: Build NGLess modules
+      - name: Install NGLess
         run: make install CXX=g++-8 prefix=ngless_path/ngless
 
-      - name: upload
+      - name: Upload
         uses: actions/upload-artifact@v2
         with:
           name: ngless_install
